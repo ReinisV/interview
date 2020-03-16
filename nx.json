@@ -1,0 +1,22 @@
+{
+  "npmScope": "interview",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "interview": {
+      "tags": []
+    },
+    "interview-e2e": {
+      "tags": [],
+      "implicitDependencies": ["interview"]
+    }
+  }
+}
