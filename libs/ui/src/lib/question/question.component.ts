@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Question } from '../../interview.reducer';
+import { Question } from '../../store/interview.state';
 
 @Component({
   selector: 'interview-question',
@@ -7,7 +7,6 @@ import { Question } from '../../interview.reducer';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent {
-
   questionValue: Question;
   originalQuestionValue: Question;
   isInEditMode = false;
@@ -42,5 +41,4 @@ export class QuestionComponent {
   editClicked() {
     this.isInEditMode = true;
   }
-
 }

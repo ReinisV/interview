@@ -1,7 +1,3 @@
-<div class="row">
-  <h4>All questions</h4>
-</div>
-
 <interview-question *ngFor="let q of questions$ | async"
                     [question]="q"
                     (saveRequested)="saveQuestion($event)"

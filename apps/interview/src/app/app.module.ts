@@ -18,7 +18,9 @@ import { appRoutes } from './appRoutes.config';
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    StoreModule.forRoot({ questions: questionsReducer }),
+    StoreModule.forRoot({
+      questions: questionsReducer,
+    }),
     UiModule,
     NgbModule,
   ],

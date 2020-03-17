@@ -6,8 +6,7 @@
       <li [ngbNavItem]="link.fragment"
           *ngFor="let link of links">
         <a ngbNavLink
-           routerLink="."
-           [pathname]="link.fragment">{{ link.title }}</a>
+           [routerLink]="link.fragment">{{ link.title }}</a>
       </li>
     </ul>
   </div>

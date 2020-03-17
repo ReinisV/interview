@@ -16,5 +16,6 @@ export class AppComponent {
 
   links = [
     { title: 'My questions list', fragment: '/my-questions' },
+    { title: 'My questionnaires list', fragment: '/my-questionnaires' },
   ];
 }
