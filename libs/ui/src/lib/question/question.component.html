@@ -1,22 +1,92 @@
 <div class="row">
-
-  <div class="form-group col"
+  <div class="col"
        *ngIf="isInEditMode">
-    <label [for]="'questionText' + questionValue.questionId">Question text</label>
-    <input type="text"
-           class="form-control"
-           [id]="'questionText' + questionValue.questionId"
-           [(ngModel)]="questionValue.questionText">
+    <div class="form-row">
+      <div class="col-2">
+        <label [for]="'questionText' + questionValue.questionId">Question text</label>
+      </div>
+      <div class="col">
+        <input type="text"
+               class="form-control"
+               [id]="'questionText' + questionValue.questionId"
+               [(ngModel)]="questionValue.questionText">
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-2">
+        <label [for]="'feedbackChoices' + questionValue.questionId">Feedback choices</label>
+      </div>
+      <div class="col">
+        <ul class="list-group list-group-flush"
+            [id]="'feedbackChoices' + questionValue.questionId">
+          <li *ngFor="let feedbackChoice of questionValue.feedbackChoices; index as i"
+              class="list-group-item">
+            {{ feedbackChoice }}
+            <button type="button"
+                    class="close"
+                    aria-label="Close"
+                    (click)="removeFeedbackChoice(i)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </li>
+          <li *ngIf="inAddNewFeedbackMode"
+              class="list-group-item">
+            <div class="row">
+              <div class="col">
+                <input type="text"
+                       class="form-control"
+                       [id]="'newFeedback' + questionValue.questionId"
+                       [(ngModel)]="newFeedbackText">
+              </div>
+              <div class="col-3">
+                <button type="button"
+                        class="btn btn-primary btn-sm float-right"
+                        (click)="addFeedback()"
+                        [disabled]="newFeedbackText.length === 0">Add</button>
+                <button type="button"
+                        class="btn btn-secondary btn-sm float-right"
+                        (click)="cancelFeedback()">Cancel</button>
+              </div>
+            </div>
+          </li>
+          <li *ngIf="!inAddNewFeedbackMode"
+              class="list-group-item">
+            <button type="button"
+                    class="btn btn-primary btn-sm float-right"
+                    (click)="inAddNewFeedbackMode = true">Add new feedback</button>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="form-group col"
+
+  <div class="col"
        *ngIf="!isInEditMode">
-    <label [for]="'questionText' + questionValue.questionId">Question text</label>
-    <input type="text"
-           readonly
-           class="form-control-plaintext"
-           [id]="'questionText' + questionValue.questionId"
-           [ngModel]="questionValue.questionText">
+    <div class="row">
+      <div class="col-2">
+        <label [for]="'questionText' + questionValue.questionId">Question text</label>
+      </div>
+      <div class="col">
+        <p [id]="'questionText' + questionValue.questionId">
+          {{ questionValue.questionText }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label [for]="'feedbackChoices' + questionValue.questionId">Feedback choices</label>
+      </div>
+      <div class="col">
+        <span [id]="'feedbackChoices' + questionValue.questionId">
+          <p *ngFor="let feedbackChoice of questionValue.feedbackChoices">
+            {{ feedbackChoice }}
+          </p>
+        </span>
+      </div>
+    </div>
   </div>
+
 
   <div class="col-2"
        *ngIf="!isInEditMode">
@@ -37,5 +107,4 @@
             class="btn btn-secondary"
             (click)="cancelClicked()">Cancel</button>
   </div>
-
 </div>

@@ -11,6 +11,9 @@ export class QuestionComponent {
   originalQuestionValue: Question;
   isInEditMode = false;
 
+  inAddNewFeedbackMode = false;
+  newFeedbackText = "";
+
   @Input()
   set question(value: Question) {
     this.originalQuestionValue = value;
@@ -22,23 +25,45 @@ export class QuestionComponent {
   @Output() saveRequested = new EventEmitter<Question>();
   @Output() deleteRequested = new EventEmitter<string>();
 
-  saveClicked() {
+  saveClicked(): void {
     this.saveRequested.emit(this.questionValue);
     this.isInEditMode = false;
   }
 
-  cancelClicked() {
+  cancelClicked(): void {
     this.questionValue = {
       ...this.originalQuestionValue,
     };
     this.isInEditMode = false;
   }
 
-  deleteClicked() {
+  deleteClicked(): void {
     this.deleteRequested.emit(this.questionValue.questionId);
   }
 
-  editClicked() {
+  editClicked(): void {
     this.isInEditMode = true;
+  }
+
+  removeFeedbackChoice(indexOfFeedbackChoice: number): void {
+    this.questionValue.feedbackChoices = [
+      ...this.questionValue.feedbackChoices.slice(0, indexOfFeedbackChoice),
+      ...this.questionValue.feedbackChoices.slice(indexOfFeedbackChoice + 1)
+    ];
+  }
+
+  addFeedback() {
+    this.questionValue.feedbackChoices = [
+      ...this.questionValue.feedbackChoices,
+      this.newFeedbackText,
+    ];
+
+    this.newFeedbackText = "";
+    this.inAddNewFeedbackMode = false;
+  }
+
+  cancelFeedback() {
+    this.newFeedbackText = "";
+    this.inAddNewFeedbackMode = false;
   }
 }
