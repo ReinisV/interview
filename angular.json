@@ -25,7 +25,10 @@
               "apps/interview/src/favicon.ico",
               "apps/interview/src/assets"
             ],
-            "styles": ["apps/interview/src/styles.scss"],
+            "styles": [
+              "apps/interview/src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -83,7 +86,10 @@
               "apps/interview/tsconfig.app.json",
               "apps/interview/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/interview/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/interview/**"
+            ]
           }
         },
         "test": {
@@ -118,8 +124,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/interview-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/interview-e2e/**"]
+            "tsConfig": [
+              "apps/interview-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/interview-e2e/**"
+            ]
           }
         }
       }

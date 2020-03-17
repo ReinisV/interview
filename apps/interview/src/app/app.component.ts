@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { addEmptyQuestion } from './interview.actions';
+import { addEmptyQuestion, updateQuestion, deleteQuestion } from './interview.actions';
 import { Question, QuestionState } from './interview.reducer';
 
 @Component({
@@ -9,7 +9,6 @@ import { Question, QuestionState } from './interview.reducer';
   templateUrl: './app.component.html',
   styleUrls: [
     './app.component.scss',
-    "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css",
   ]
 })
 export class AppComponent {
@@ -19,7 +18,15 @@ export class AppComponent {
     this.questions$ = store.select(state => state.questions.questions);
   }
 
-  addEmptyQuestion() {
+  addEmptyQuestion(): void {
     this.store.dispatch(addEmptyQuestion());
+  }
+
+  saveQuestion(question: Question): void {
+    this.store.dispatch(updateQuestion({ question: question }));
+  }
+
+  deleteQuestion(questionId: string): void {
+    this.store.dispatch(deleteQuestion({ questionId: questionId }));
   }
 }

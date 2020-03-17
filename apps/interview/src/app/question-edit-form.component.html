@@ -1,0 +1,41 @@
+<div class="row">
+
+  <div class="form-group col"
+       *ngIf="isInEditMode">
+    <label [for]="'questionText' + questionValue.questionId">Question text</label>
+    <input type="text"
+           class="form-control"
+           [id]="'questionText' + questionValue.questionId"
+           [(ngModel)]="questionValue.questionText">
+  </div>
+  <div class="form-group col"
+       *ngIf="!isInEditMode">
+    <label [for]="'questionText' + questionValue.questionId">Question text</label>
+    <input type="text"
+           readonly
+           class="form-control-plaintext"
+           [id]="'questionText' + questionValue.questionId"
+           [ngModel]="questionValue.questionText">
+  </div>
+
+  <div class="col-2"
+       *ngIf="!isInEditMode">
+    <button type="button"
+            class="btn btn-primary"
+            (click)="editClicked()">Edit</button>
+    <button type="button"
+            class="btn btn-danger"
+            (click)="deleteClicked()">Delete</button>
+  </div>
+
+  <div class="col-2"
+       *ngIf="isInEditMode">
+    <button type="button"
+            class="btn btn-primary"
+            (click)="saveClicked()">Save</button>
+    <button type="button"
+            class="btn btn-secondary"
+            (click)="cancelClicked()">Cancel</button>
+  </div>
+
+</div>
