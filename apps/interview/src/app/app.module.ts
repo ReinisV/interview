@@ -9,7 +9,6 @@ import { UiModule } from '@interview/ui';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { questionsReducer } from '@interview/ui';
 import { appRoutes } from './appRoutes.config';
 
 @NgModule({
@@ -18,9 +17,7 @@ import { appRoutes } from './appRoutes.config';
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    StoreModule.forRoot({
-      questions: questionsReducer,
-    }),
+    StoreModule.forRoot({}),
     UiModule,
     NgbModule,
   ],

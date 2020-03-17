@@ -1,4 +1,5 @@
 <div class="row">
+  <!-- edit mode form -->
   <div class="col"
        *ngIf="isInEditMode">
     <div class="form-row">
@@ -12,6 +13,7 @@
                [(ngModel)]="questionValue.questionText">
       </div>
     </div>
+
     <div class="form-row">
       <div class="col-2">
         <label [for]="'feedbackChoices' + questionValue.questionId">Feedback choices</label>
@@ -60,6 +62,7 @@
     </div>
   </div>
 
+  <!-- view mode form -->
   <div class="col"
        *ngIf="!isInEditMode">
     <div class="row">
@@ -87,17 +90,7 @@
     </div>
   </div>
 
-
-  <div class="col-2"
-       *ngIf="!isInEditMode">
-    <button type="button"
-            class="btn btn-primary float-right"
-            (click)="editClicked()">Edit</button>
-    <button type="button"
-            class="btn btn-danger float-right"
-            (click)="deleteClicked()">Delete</button>
-  </div>
-
+  <!-- edit mode buttons -->
   <div class="col-2"
        *ngIf="isInEditMode">
     <button type="button"
@@ -107,4 +100,16 @@
             class="btn btn-secondary"
             (click)="cancelClicked()">Cancel</button>
   </div>
+
+  <!-- view mode buttons -->
+  <div class="col-2"
+       *ngIf="!isInEditMode">
+    <button type="button"
+            class="btn btn-danger float-right"
+            (click)="deleteClicked()">Delete</button>
+    <button type="button"
+            class="btn btn-primary float-right"
+            (click)="editClicked()">Edit</button>
+  </div>
+
 </div>

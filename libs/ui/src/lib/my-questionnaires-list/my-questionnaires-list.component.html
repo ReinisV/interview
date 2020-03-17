@@ -1,12 +1,14 @@
-<interview-questionnaire *ngFor="let q of questionnaires$ | async"
-                         [questionnaire]="q"
-                         (saveRequested)="saveQuestionnaire($event)"
-                         (deleteRequested)="deleteQuestionnaire($event)"></interview-questionnaire>
+<div class="list-group list-group-flush">
+  <div class="list-group-item list-group-item-action"
+       *ngFor="let q of questionnaires$ | async">
+    <interview-questionnaire [questionnaire]="q"
+                             (saveRequested)="saveQuestionnaire($event)"
+                             (deleteRequested)="deleteQuestionnaire($event)"></interview-questionnaire>
+  </div>
+</div>
 
 <div class="row">
   <div class="col">
-  </div>
-  <div class="col-2">
     <button type="button"
             class="btn btn-primary float-right"
             (click)="addEmptyQuestionnaire()">Add</button>

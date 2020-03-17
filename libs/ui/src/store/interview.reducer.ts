@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { addEmptyQuestion, updateQuestion, deleteQuestion, addEmptyQuestionnaire, updateQuestionnaire, deleteQuestionnaire } from './interview.actions';
-import { initialState, InterviewState, S4 } from './interview.state';
+import { S4, initialQuestionState, QuestionState, initialQuestionnaireState, QuestionnaireState } from './interview.state';
 
-const _questionsReducer = createReducer(initialState,
+const _questionsReducer = createReducer(initialQuestionState,
   on(addEmptyQuestion, state => ({
     ...state,
     questions: [
@@ -40,7 +40,9 @@ const _questionsReducer = createReducer(initialState,
       ]
     };
   }),
+);
 
+const _questionnairesReducer = createReducer(initialQuestionnaireState,
   on(addEmptyQuestionnaire, state => ({
     ...state,
     questionnaires: [
@@ -80,6 +82,10 @@ const _questionsReducer = createReducer(initialState,
   }),
 );
 
-export function questionsReducer(state: InterviewState, action) {
+export function questionnaireReducer(state: QuestionnaireState, action) {
+  return _questionnairesReducer(state, action);
+}
+
+export function questionReducer(state: QuestionState, action) {
   return _questionsReducer(state, action);
 }

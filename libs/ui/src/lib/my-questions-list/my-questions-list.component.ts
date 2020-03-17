@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Question, InterviewState } from '../../store/interview.state';
 import { addEmptyQuestion, updateQuestion, deleteQuestion } from '../../store/interview.actions';
+import { selectQuestions } from '../../store/interview.selectors';
 
 @Component({
   selector: 'interview-my-questions-list',
@@ -13,9 +14,9 @@ export class MyQuestionsListComponent {
   questions$: Observable<Question[]>;
 
   constructor(
-    private store: Store<{ questions: InterviewState }>
+    private store: Store<InterviewState>
     ) {
-    this.questions$ = store.select(state => state.questions.questions);
+    this.questions$ = this.store.pipe(select(selectQuestions));
   }
 
   addEmptyQuestion(): void {
