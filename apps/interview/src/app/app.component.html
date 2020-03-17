@@ -1,20 +1,17 @@
 <div class="container">
   <div class="row">
-    <h4>All questions</h4>
+    <ul ngbNav
+        [activeId]="route.fragment | async"
+        class="nav-tabs">
+      <li [ngbNavItem]="link.fragment"
+          *ngFor="let link of links">
+        <a ngbNavLink
+           routerLink="."
+           [pathname]="link.fragment">{{ link.title }}</a>
+      </li>
+    </ul>
   </div>
 
-  <interview-question *ngFor="let q of questions$ | async"
-                      [question]="q"
-                      (saveRequested)="saveQuestion($event)"
-                      (deleteRequested)="deleteQuestion($event)"></interview-question>
+  <router-outlet></router-outlet>
 
-  <div class="row">
-    <div class="col">
-    </div>
-    <div class="col-1">
-      <button type="button"
-              class="btn btn-primary"
-              (click)="addEmptyQuestion()">Add</button>
-    </div>
-  </div>
 </div>

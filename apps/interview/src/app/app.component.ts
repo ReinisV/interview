@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Store, select } from '@ngrx/store';
-import { Question, QuestionState } from '@interview/ui';
-import { addEmptyQuestion, updateQuestion, deleteQuestion } from '@interview/ui';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'interview-root',
@@ -12,21 +9,12 @@ import { addEmptyQuestion, updateQuestion, deleteQuestion } from '@interview/ui'
   ]
 })
 export class AppComponent {
-  questions$: Observable<Question[]>;
-
-  constructor(private store: Store<{ questions: QuestionState }>) {
-    this.questions$ = store.select(state => state.questions.questions);
+  constructor(
+    public route: ActivatedRoute
+  ) {
   }
 
-  addEmptyQuestion(): void {
-    this.store.dispatch(addEmptyQuestion());
-  }
-
-  saveQuestion(question: Question): void {
-    this.store.dispatch(updateQuestion({ question: question }));
-  }
-
-  deleteQuestion(questionId: string): void {
-    this.store.dispatch(deleteQuestion({ questionId: questionId }));
-  }
+  links = [
+    { title: 'My questions list', fragment: '/my-questions' },
+  ];
 }
