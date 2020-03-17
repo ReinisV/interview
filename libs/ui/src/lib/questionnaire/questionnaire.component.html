@@ -56,13 +56,42 @@
               class="list-group-item">
             <button type="button"
                     class="btn btn-primary btn-sm float-right"
-                    (click)="inAddNewQuestionMode = true">Add new feedback</button>
+                    (click)="inAddNewQuestionMode = true">Add new question</button>
           </li>
         </ul>
       </div>
     </div>
   </div>
 
+  <!-- view mode form -->
+  <div class="col"
+       *ngIf="!isInEditMode">
+    <div class="row">
+      <div class="col-2">
+        <label [for]="'questionnaireName' + questionnaireValue.questionnaireId">Questionnaire name</label>
+      </div>
+      <div class="col">
+        <p [id]="'questionnaireName' + questionnaireValue.questionnaireId">
+          {{ questionnaireValue.questionnaireName }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label [for]="'questionIds' + questionnaireValue.questionnaireId">Questions</label>
+      </div>
+      <div class="col">
+        <span [id]="'questionIds' + questionnaireValue.questionnaireId">
+          <p *ngFor="let question of questionsSelected$ | async">
+            {{ question.questionText }}
+          </p>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- edit mode buttons -->
   <div class="col-2"
        *ngIf="!isInEditMode">
     <button type="button"
@@ -73,6 +102,7 @@
             (click)="deleteClicked()">Delete</button>
   </div>
 
+  <!-- view mode buttons -->
   <div class="col-2"
        *ngIf="isInEditMode">
     <button type="button"
