@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store, select } from '@ngrx/store';
-import { addEmptyQuestion, updateQuestion, deleteQuestion } from './interview.actions';
-import { Question, QuestionState } from './interview.reducer';
+import { Question, QuestionState } from '@interview/ui';
+import { addEmptyQuestion, updateQuestion, deleteQuestion } from '@interview/ui';
 
 @Component({
   selector: 'interview-root',

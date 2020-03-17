@@ -1,11 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Question } from './interview.reducer';
+import { Question } from '../../interview.reducer';
 
 @Component({
-  selector: 'interview-question-edit-form',
-  templateUrl: './question-edit-form.component.html',
+  selector: 'interview-question',
+  templateUrl: './question.component.html',
+  styleUrls: ['./question.component.css']
 })
-export class InterviewQuestionEditFormComponent {
+export class QuestionComponent {
+
   questionValue: Question;
   originalQuestionValue: Question;
   isInEditMode = false;
@@ -40,4 +42,5 @@ export class InterviewQuestionEditFormComponent {
   editClicked() {
     this.isInEditMode = true;
   }
+
 }

@@ -17,6 +17,12 @@
     "interview-e2e": {
       "tags": [],
       "implicitDependencies": ["interview"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "data": {
+      "tags": []
     }
   }
 }

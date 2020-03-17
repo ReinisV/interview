@@ -71,6 +71,6 @@ const _questionsReducer = createReducer(initialState,
   }),
 );
 
-export function questionsReducer(state, action) {
+export function questionsReducer(state: QuestionState, action) {
   return _questionsReducer(state, action);
 }
