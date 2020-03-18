@@ -23,6 +23,30 @@
     },
     "data": {
       "tags": []
+    },
+    "questions-ui": {
+      "tags": []
+    },
+    "questions-data-access": {
+      "tags": []
+    },
+    "questions-util": {
+      "tags": []
+    },
+    "questions-feature": {
+      "tags": []
+    },
+    "questionnaires-feature": {
+      "tags": []
+    },
+    "questionnaires-data-access": {
+      "tags": []
+    },
+    "questionnaires-util": {
+      "tags": []
+    },
+    "questionnaires-ui": {
+      "tags": []
     }
   }
 }

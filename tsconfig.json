@@ -17,7 +17,23 @@
     "baseUrl": ".",
     "paths": {
       "@interview/ui": ["libs/ui/src/index.ts"],
-      "@interview/data": ["libs/data/src/index.ts"]
+      "@interview/data": ["libs/data/src/index.ts"],
+      "@interview/questions/ui": ["libs/questions/ui/src/index.ts"],
+      "@interview/questions/data-access": [
+        "libs/questions/data-access/src/index.ts"
+      ],
+      "@interview/questions/util": ["libs/questions/util/src/index.ts"],
+      "@interview/questions/feature": ["libs/questions/feature/src/index.ts"],
+      "@interview/questionnaires/feature": [
+        "libs/questionnaires/feature/src/index.ts"
+      ],
+      "@interview/questionnaires/data-access": [
+        "libs/questionnaires/data-access/src/index.ts"
+      ],
+      "@interview/questionnaires/util": [
+        "libs/questionnaires/util/src/index.ts"
+      ],
+      "@interview/questionnaires/ui": ["libs/questionnaires/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

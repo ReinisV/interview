@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
-import { MyQuestionsListComponent, MyQuestionnairesListComponent } from '@interview/ui';
+
+import { MyQuestionsListComponent } from '@interview/questions/feature';
+import { MyQuestionnairesListComponent } from '@interview/questionnaires/feature';
 
 export const appRoutes: Routes = [
   {

@@ -191,6 +191,265 @@
           "styleext": "scss"
         }
       }
+    },
+    "questions-ui": {
+      "projectType": "library",
+      "root": "libs/questions/ui",
+      "sourceRoot": "libs/questions/ui/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questions/ui/tsconfig.lib.json",
+              "libs/questions/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/questions/ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questions/ui/jest.config.js",
+            "tsConfig": "libs/questions/ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questions/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "questions-data-access": {
+      "projectType": "library",
+      "root": "libs/questions/data-access",
+      "sourceRoot": "libs/questions/data-access/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questions/data-access/tsconfig.lib.json",
+              "libs/questions/data-access/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/questions/data-access/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questions/data-access/jest.config.js",
+            "tsConfig": "libs/questions/data-access/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questions/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "questions-util": {
+      "projectType": "library",
+      "root": "libs/questions/util",
+      "sourceRoot": "libs/questions/util/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questions/util/tsconfig.lib.json",
+              "libs/questions/util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/questions/util/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questions/util/jest.config.js",
+            "tsConfig": "libs/questions/util/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questions/util/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "questions-feature": {
+      "projectType": "library",
+      "root": "libs/questions/feature",
+      "sourceRoot": "libs/questions/feature/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questions/feature/tsconfig.lib.json",
+              "libs/questions/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/questions/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questions/feature/jest.config.js",
+            "tsConfig": "libs/questions/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questions/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "questionnaires-feature": {
+      "projectType": "library",
+      "root": "libs/questionnaires/feature",
+      "sourceRoot": "libs/questionnaires/feature/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questionnaires/feature/tsconfig.lib.json",
+              "libs/questionnaires/feature/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/questionnaires/feature/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questionnaires/feature/jest.config.js",
+            "tsConfig": "libs/questionnaires/feature/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questionnaires/feature/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "questionnaires-data-access": {
+      "projectType": "library",
+      "root": "libs/questionnaires/data-access",
+      "sourceRoot": "libs/questionnaires/data-access/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questionnaires/data-access/tsconfig.lib.json",
+              "libs/questionnaires/data-access/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/questionnaires/data-access/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questionnaires/data-access/jest.config.js",
+            "tsConfig": "libs/questionnaires/data-access/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questionnaires/data-access/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "questionnaires-util": {
+      "projectType": "library",
+      "root": "libs/questionnaires/util",
+      "sourceRoot": "libs/questionnaires/util/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questionnaires/util/tsconfig.lib.json",
+              "libs/questionnaires/util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/questionnaires/util/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questionnaires/util/jest.config.js",
+            "tsConfig": "libs/questionnaires/util/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questionnaires/util/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "questionnaires-ui": {
+      "projectType": "library",
+      "root": "libs/questionnaires/ui",
+      "sourceRoot": "libs/questionnaires/ui/src",
+      "prefix": "interview",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/questionnaires/ui/tsconfig.lib.json",
+              "libs/questionnaires/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/questionnaires/ui/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/questionnaires/ui/jest.config.js",
+            "tsConfig": "libs/questionnaires/ui/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/questionnaires/ui/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
