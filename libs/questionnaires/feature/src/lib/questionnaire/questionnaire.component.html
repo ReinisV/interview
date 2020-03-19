@@ -1,116 +1,130 @@
-<div class="row">
+<div fxLayout>
   <!-- edit mode form -->
-  <div class="col"
-       *ngIf="isInEditMode">
-    <div class="form-row">
-      <div class="col-2">
-        <label [for]="'questionnaireName' + questionnaireValue.questionnaireId">Questionnaire name</label>
-      </div>
-      <div class="col">
+  <div fxFlex>
+
+    <div *ngIf="isInEditMode"
+         fxLayout="column">
+      <mat-form-field fxFlex>
+        <mat-label>Questionnaire name</mat-label>
         <input type="text"
-               class="form-control"
-               [id]="'questionnaireName' + questionnaireValue.questionnaireId"
+               matInput
                [(ngModel)]="questionnaireValue.questionnaireName">
-      </div>
-    </div>
+      </mat-form-field>
 
-    <div class="form-row">
-      <div class="col-2">
-        <label [for]="'questions' + questionnaireValue.questionnaireId">Questions</label>
-      </div>
-      <div class="col">
-        <ul class="list-group list-group-flush"
-            [id]="'questions' + questionnaireValue.questionnaireId">
-          <li *ngFor="let question of questionsSelected$ | async; index as i"
-              class="list-group-item">
-            {{ question.questionText }}
-            <button type="button"
-                    class="close"
-                    aria-label="Close"
-                    (click)="removeQuestion(i)">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </li>
-          <li *ngIf="inAddNewQuestionMode"
-              class="list-group-item">
-            <div class="row">
-              <div class="col">
-                <ng-select [items]="questionsNotYetIncluded$ | async"
-                           bindLabel="questionText"
-                           bindValue="questionId"
-                           [(ngModel)]="newQuestionChoice">
-                </ng-select>
-              </div>
-              <div class="col-3">
-                <button type="button"
-                        class="btn btn-primary btn-sm float-right"
-                        (click)="addQuestion()"
-                        [disabled]="newQuestionChoice === null">Add</button>
-                <button type="button"
-                        class="btn btn-secondary btn-sm float-right"
-                        (click)="cancelQuestion()">Cancel</button>
-              </div>
+      <div fxFlex
+           fxLayout>
+        <div fxFlex="15%">
+          <label>Questions</label>
+        </div>
+        <mat-list fxFlex
+        dense
+                  fxLayout="column">
+          <mat-list-item *ngFor="let question of questionsSelected$ | async; index as i"
+                         fxLayout
+                         fxFlex>
+            <span fxFlex>
+              {{ question.questionText }}
+            </span>
+            <div fxFlex
+                 fxLayoutAlign="end">
+              <mat-icon-button>
+                <mat-icon (click)="removeQuestion(i)">close</mat-icon>
+              </mat-icon-button>
             </div>
-          </li>
-          <li *ngIf="!inAddNewQuestionMode"
-              class="list-group-item">
-            <button type="button"
-                    class="btn btn-primary btn-sm float-right"
-                    (click)="inAddNewQuestionMode = true">Add new question</button>
-          </li>
-        </ul>
+          </mat-list-item>
+
+          <mat-list-item *ngIf="inAddNewQuestionMode"
+                         fxLayout
+                         fxFlex>
+
+            <mat-form-field fxFlex>
+              <mat-label>Select a question to add</mat-label>
+              <mat-select [(value)]="newQuestionChoice">
+                <mat-option *ngFor="let question of questionsNotYetIncluded$ | async"
+                            [value]="question.questionId">
+                  {{ question.questionText }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div fxFlex="20%"
+                 fxLayoutAlign="end">
+              <button mat-raised-button
+                      color="primary"
+                      (click)="addQuestion()"
+                      [disabled]="newQuestionChoice === null">Add</button>
+              <button mat-raised-button
+                      (click)="cancelQuestion()">Cancel</button>
+            </div>
+
+          </mat-list-item>
+
+          <mat-list-item *ngIf="!inAddNewQuestionMode"
+                         fxLayoutAlign="end"
+                         fxLayout
+                         fxFlex>
+            <div fxFlex></div>
+            <div fxFlex
+                 fxLayoutAlign="end">
+              <button mat-raised-button
+                      color="primary"
+                      (click)="inAddNewQuestionMode = true">Add new question</button>
+            </div>
+
+          </mat-list-item>
+        </mat-list>
       </div>
     </div>
-  </div>
 
-  <!-- view mode form -->
-  <div class="col"
-       *ngIf="!isInEditMode">
-    <div class="row">
-      <div class="col-2">
-        <label [for]="'questionnaireName' + questionnaireValue.questionnaireId">Questionnaire name</label>
-      </div>
-      <div class="col">
-        <p [id]="'questionnaireName' + questionnaireValue.questionnaireId">
-          {{ questionnaireValue.questionnaireName }}
-        </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-2">
-        <label [for]="'questionIds' + questionnaireValue.questionnaireId">Questions</label>
-      </div>
-      <div class="col">
-        <span [id]="'questionIds' + questionnaireValue.questionnaireId">
-          <p *ngFor="let question of questionsSelected$ | async">
-            {{ question.questionText }}
+    <!-- view mode form -->
+    <div *ngIf="!isInEditMode">
+      <div fxLayout>
+        <div fxFlex="15%">
+          <label>Questionnaire name</label>
+        </div>
+        <div fxFlex>
+          <p>
+            {{ questionnaireValue.questionnaireName }}
           </p>
-        </span>
+        </div>
+      </div>
+
+      <div fxLayout>
+        <div fxFlex="15%">
+          <label>Questions</label>
+        </div>
+        <div fxFlex>
+          <span>
+            <p *ngFor="let question of questionsSelected$ | async">
+              {{ question.questionText }}
+            </p>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- edit mode buttons -->
-  <div class="col-2"
-       *ngIf="!isInEditMode">
-    <button type="button"
-            class="btn btn-primary float-right"
-            (click)="editClicked()">Edit</button>
-    <button type="button"
-            class="btn btn-danger float-right"
-            (click)="deleteClicked()">Delete</button>
-  </div>
+  <div fxFlex="15%"
+       fx-layout-align="end">
 
-  <!-- view mode buttons -->
-  <div class="col-2"
-       *ngIf="isInEditMode">
-    <button type="button"
-            class="btn btn-primary"
-            (click)="saveClicked()">Save</button>
-    <button type="button"
-            class="btn btn-secondary"
-            (click)="cancelClicked()">Cancel</button>
+    <div *ngIf="!isInEditMode">
+      <button mat-raised-button
+              color="primary"
+              (click)="editClicked()">Edit</button>
+      <button mat-raised-button
+              color="warn"
+              (click)="deleteClicked()">Delete</button>
+    </div>
+
+    <!-- view mode buttons -->
+    <div *ngIf="isInEditMode">
+      <button mat-raised-button
+              color="primary"
+              (click)="saveClicked()">Save</button>
+      <button mat-raised-button
+              (click)="cancelClicked()">Cancel</button>
+    </div>
   </div>
 
 </div>

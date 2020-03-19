@@ -4,9 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'interview-root',
   templateUrl: './app.component.html',
-  styleUrls: [
-    './app.component.scss',
-  ]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
   constructor(
@@ -14,8 +12,8 @@ export class AppComponent {
   ) {
   }
 
-  links = [
-    { title: 'My questions list', fragment: '/my-questions' },
-    { title: 'My questionnaires list', fragment: '/my-questionnaires' },
+  navLinks = [
+    { label: 'My questions list', path: '/my-questions', },
+    { label: 'My questionnaires list', path: '/my-questionnaires', },
   ];
 }

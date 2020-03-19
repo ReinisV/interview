@@ -18,7 +18,7 @@ import {
 @Component({
   selector: 'interview-questionnaire',
   templateUrl: './questionnaire.component.html',
-  styleUrls: ['./questionnaire.component.css']
+  styleUrls: ['./questionnaire.component.scss']
 })
 export class QuestionnaireComponent {
   constructor(
@@ -33,7 +33,7 @@ export class QuestionnaireComponent {
       ...value,
     };
 
-    this.updateQuestionsNotIncluded();
+    this.updateQuestionsObservables();
   }
 
   questionnaireValue: Questionnaire;
@@ -49,7 +49,7 @@ export class QuestionnaireComponent {
   questionsNotYetIncluded$: Observable<Question[]>;
   questionsSelected$: Observable<Question[]>;
 
-  private updateQuestionsNotIncluded(): void {
+  private updateQuestionsObservables(): void {
     this.questionsNotYetIncluded$ = this.store.pipe(select(
       selectors.getAllQuestionsExceptIds,
       { questionIds: this.questionnaireValue.questionIds }
@@ -70,6 +70,8 @@ export class QuestionnaireComponent {
     this.questionnaireValue = {
       ...this.originalQuestionnaireValue,
     };
+
+    this.updateQuestionsObservables();
     this.isInEditMode = false;
   }
 
@@ -87,7 +89,7 @@ export class QuestionnaireComponent {
       ...this.questionnaireValue.questionIds.slice(indexOfQuestionChoice + 1)
     ];
 
-    this.updateQuestionsNotIncluded();
+    this.updateQuestionsObservables();
   }
 
   addQuestion() {
@@ -98,7 +100,7 @@ export class QuestionnaireComponent {
 
     this.newQuestionChoice = null;
     this.inAddNewQuestionMode = false;
-    this.updateQuestionsNotIncluded();
+    this.updateQuestionsObservables();
   }
 
   cancelQuestion() {
