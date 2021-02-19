@@ -1,3 +1,12 @@
+### Archivation note [START]
+I wrote the stuff in this repository as a task to bring me up to speed on the different complex libraries that can be added on top of an existing Angular application to resolve the complexity.
+
+Resolving complexity by adding more complexity on top of it seems to be the Angular way™.
+
+Since I now have more experience with all of these libraries from actually working with them, I I don't plan on adding anything to this repository.
+
+### Archivation note [END]
+
 # Interview
 
 This project was generated using [Nx](https://nx.dev).
